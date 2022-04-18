@@ -1,0 +1,61 @@
+print('Привет, это игра в палочки, 2 игрока тянут палочки из набора, можно тянуть от 1 до 3, кто вытянит последнюю проиграет.')
+print('Введите колличество палочек с которым хотите сиграть (по уполчанию рекомендую 10).')
+palochi=int(input())
+print('Введите имя первого игрока.')
+player1=input()
+print('Введите имя второго игрока.')
+player2=input()
+
+print('Подбросим монетку и узнаем кто ходит первым.')
+import random
+x=random.randint(1, 10)
+if x<=5:
+    print(f'Похоже первый ходит {player1}.')
+    j=player1
+else:
+    print(f'Похоже первый ходит {player2}.')
+    j=player2
+        
+while palochi>1:
+    
+    if j==player1:
+        print(f'{player1} возьмите от одной до трёх палочек.')
+        h=int(input())
+        
+        if h>3:
+            print('Нельзя взять больше трёх палочек, измените число.')
+            continue
+        palochi=palochi-h
+        print(f'Осталось {palochi} палочек.')
+        j=player2
+        P=player2
+        
+        if palochi<=0:
+            print(f'Кажется что {player1} взял слишком много и проиграл, поздравляю с победой {player2}.')
+            break
+        
+        if palochi==1:
+            print(f'Кажется что {player2} проиграл так как осталось 1 палочка, поздравляю с победой {player1}.')
+            break
+        print(f'Ход переходит к {player2}.')
+    
+    else:
+        print(f'{player2} возьмите от одной до трёх палочек.')
+        h=int(input())
+        
+        if h>3:
+            print('Нельзя взять больше трёх палочек, измените число.')
+            continue
+        palochi=palochi-h
+        print(f'Осталось {palochi} палочек.')
+        j=player1
+        P=player1
+        
+        if palochi<=0:
+            print(f'Кажется что {player2} взял слишком много и проиграл, поздравляю с победой {player1}.')
+            break
+        
+        if palochi==1:
+            print(f'Кажется что {player1} проиграл так как осталось 1 палочка, поздравляю с победой {player2}.')
+            break
+        print(f'Ход переходит к {player1}.')
